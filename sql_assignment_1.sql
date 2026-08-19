@@ -1,3 +1,4 @@
+
 /*1.Table Creation (CREATE)*/
 
 
@@ -125,11 +126,11 @@ CREATE TABLE Employees (
     gender ENUM('M', 'F'),
     age INT CHECK (age >= 18),
     hire_date DATE DEFAULT (CURRENT_DATE),
+    designation varchar(100),
     department_id INT,FOREIGN KEY (department_id) REFERENCES Departments(department_id),
     location_id INT, FOREIGN KEY (location_id) REFERENCES Location(location_id),
 	salary decimal(10,2)    
 );
-alter table Employees add column designation varchar(100);
 
 INSERT INTO Departments (department_id, department_name)
 VALUES
@@ -148,11 +149,11 @@ VALUES
 (5, 'Chicago');
 
 INSERT INTO Employees
-(employee_id, employee_name, gender, age, hire_date, department_id, location_id, salary,designation)
+(employee_id, employee_name, gender, age, hire_date, designation, department_id, location_id, salary)
 VALUES
-(101, 'John Smith', 'M', 25, '2023-01-15', 1, 2, 60000.00,'Data Analyst'),
-(102, 'Anita Thomas', 'F', 28, '2023-02-8', 2, 1, 55000.00,'HR Executive'),
-(103, 'Michael Brown', 'M', 32,'2025-04-23', 3, 3, 75000.00, 'Financial Analyst'),
-(104, 'Sarah Wilson', 'F', 27, '2026-05-18', 4, 4, 58000.00,'Marketing Executive'),
-(105, 'David Miller', 'M', 35, '2024-03-11', 5, 5, 70000.00,'Sales Manager');
+(101, 'John Smith', 'M', 25, '2023-01-15', 'Data Analyst', 1, 2, 60000.00),
+(102, 'Anita Thomas', 'F', 28, DEFAULT,'HR Executive', 2, 1, 55000.00),
+(103, 'Michael Brown', 'M', 32,'2025-04-23', 'Financial Analyst', 3, 3, 75000.00),
+(104, 'Sarah Wilson', 'F', 27, '2026-05-18','Marketing Executive', 4, 4, 58000.00),
+(105, 'David Miller', 'M', 35, '2024-03-11','Sales Manager', 5, 5, 70000.00);
 select * from Employees;
